@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.w(TAG, "Google sign in failed", e);
                     }
                 }
+                else {
+                    Toast.makeText(MainActivity.this,"SignIn Failed",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
