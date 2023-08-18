@@ -61,13 +61,11 @@ public class MainActivity extends AppCompatActivity {
                     Intent data = result.getData();
                     Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                     try {
-                        // Google Sign-In was successful, authenticate with Firebase
                         GoogleSignInAccount account = task.getResult(ApiException.class);
                         firebaseAuthWithGoogle(account.getIdToken());
                         Log.w(TAG, account.getDisplayName());
 
                     } catch (ApiException e) {
-                        // Google Sign-In failed, update UI appropriately
                         Log.w(TAG, "Google sign in failed", e);
                     }
                 }
@@ -88,11 +86,11 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     startActivity(new Intent(MainActivity.this, Dashboard.class));
                     finish();
-                    // ...
+
                 } else {
-                    // If sign in fails, display a message to the user.
+
                     Log.w(TAG, "signInWithCredential:failure", task.getException());
-                    // ...
+
                 }
             }
         });
